@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { AdvertComponent } from './advert/component';
-import { ControlsComponent } from './controls/component';
+import { AdvertComponent } from '../components/advert/component';
+import { ControlsComponent } from '../components/controls/component';
 
 @Component({
   selector: 'app-root',
@@ -9,8 +9,8 @@ import { ControlsComponent } from './controls/component';
     RouterOutlet,
     AdvertComponent, ControlsComponent
   ],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.less'
+  templateUrl: './template.html',
+  styleUrl: './styles.less'
 })
 export class AppComponent {
   title = 'fmi';
