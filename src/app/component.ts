@@ -1,13 +1,12 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { AdvertComponent } from '../components/advert/component';
-import { ControlsComponent } from '../components/controls/component';
+import { WelcomeComponent } from '../pages/welcome/component';
 
 @Component({
   selector: 'app-root',
   imports: [
     RouterOutlet,
-    AdvertComponent, ControlsComponent
+    WelcomeComponent,
   ],
   templateUrl: './template.html',
   styleUrl: './styles.less'
