@@ -1,1 +1,14 @@
-<p>menu works!</p>
+<app-advert/>
+
+<div class="screen menu">
+  <div class="menu_side">
+    <div class="menu_cats">
+      @for (category of categories; track category.categoryId) {
+        <comp-menu-section
+          [categoryId]="category.categoryId"
+          [img]="category.icon"
+          [title]="category.title"/>
+      }
+    </div>
+  </div>
+</div>
