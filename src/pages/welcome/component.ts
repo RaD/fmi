@@ -1,11 +1,15 @@
 import { Component } from '@angular/core';
+import { RouterModule } from '@angular/router';
+import { urls } from '../../app/interface';
 
 @Component({
   selector: 'app-welcome',
-  imports: [],
+  imports: [
+    RouterModule,
+  ],
   templateUrl: './template.html',
   styleUrl: './styles.less'
 })
-export class WelcomeComponent {
-
+export class WelcomePage {
+  urls = urls;
 }

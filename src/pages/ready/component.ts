@@ -6,6 +6,6 @@ import { Component } from '@angular/core';
   templateUrl: './template.html',
   styleUrl: './styles.less'
 })
-export class ReadyComponent {
+export class ReadyPage {
 
 }

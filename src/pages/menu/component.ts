@@ -6,6 +6,5 @@ import { Component } from '@angular/core';
   templateUrl: './template.html',
   styleUrl: './styles.less'
 })
-export class MenuComponent {
-
+export class MenuPage {
 }
