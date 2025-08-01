@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-menu-options',
+  selector: 'comp-menu-options',
   imports: [],
   templateUrl: './template.html',
   styleUrl: './styles.less'

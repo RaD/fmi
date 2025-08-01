@@ -1,8 +1,11 @@
 import { Component } from '@angular/core';
+import { MenuActionsComponent } from '../menu-actions/component';
 
 @Component({
-  selector: 'app-menu-item',
-  imports: [],
+  selector: 'comp-menu-item',
+  imports: [
+    MenuActionsComponent,
+  ],
   templateUrl: './template.html',
   styleUrl: './styles.less'
 })

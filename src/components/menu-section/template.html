@@ -1,5 +1,5 @@
 <label>
-  <div [attr.data-category-id]="categoryId">
+  <div [attr.data-category-id]="categoryId" (click)="onSelect()">
     <img [src]="img" [alt]="title"/>
     {{ title }}
   </div>

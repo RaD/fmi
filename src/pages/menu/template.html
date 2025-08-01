@@ -1,4 +1,4 @@
-<app-advert/>
+<comp-advert/>
 
 <div class="screen menu">
   <div class="menu_side">
@@ -7,8 +7,19 @@
         <comp-menu-section
           [categoryId]="category.categoryId"
           [img]="category.icon"
-          [title]="category.title"/>
+          [title]="category.title"
+          (selected)="onCategorySelected($event)"/>
       }
     </div>
   </div>
+  <comp-menu-list [categoryId]="selectedCategory" />
+
+  <form action="" method="post" class="menu_foot">
+    <button type="reset" class="btn red">
+      <div class="_text">Очистить выбор</div>
+    </button>
+    <button type="submit" class="btn green">
+      <div class="_text">Далее • <span class="_total">600</span> ₽</div>
+    </button>
+  </form>
 </div>

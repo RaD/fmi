@@ -1,0 +1,16 @@
+<div class="menu_offer_buy">
+  @if (isAbsent) {
+    <h5>Нет в наличии</h5>
+  } @else {
+  <h5><span class="_number">200</span> ₽</h5>
+  <div class="count">
+    <button type="button" class="count_minus">
+      <img src="/assets/media/minus.svg" width="24" height="2" viewBox="0 0 24 2" fill="none"/>
+    </button>
+    <input type="text" name="count" value="1" class="count_input" readonly="" data-cost="200" data-offer="offer-1-1">
+    <button type="button" class="count_plus">
+      <img src="/assets/media/plus.svg" width="24" height="24" viewBox="0 0 24 24" fill="none"/>
+    </button>
+  </div>
+  }
+</div>

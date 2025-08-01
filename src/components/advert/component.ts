@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-advert',
+  selector: 'comp-advert',
   imports: [],
   templateUrl: './template.html',
   styleUrl: './styles.less'

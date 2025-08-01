@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-controls',
+  selector: 'comp-controls',
   imports: [],
   templateUrl: './template.html',
   styleUrl: './styles.less'

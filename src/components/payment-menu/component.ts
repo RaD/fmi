@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-payment-menu',
+  selector: 'comp-payment-menu',
   imports: [],
   templateUrl: './template.html',
   styleUrl: './styles.less'
