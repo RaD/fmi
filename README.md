@@ -12,6 +12,9 @@
 
     curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash
 
+> Именно `bash`! Оно дальше сообразит куда писать инициализационные
+команды. Утилита будет установлена в `~/.nvm`.
+
 Выбираем нужную версию NodeJS:
 
     nvm list-remote
@@ -61,3 +64,17 @@
 
 Выполните `ng build` для сборки проекта. Результат сборки будет помещён
 в каталог `dist/`.
+
+## Запуск на определённом порту
+
+Допустим, надо запускать проект на порту `4201`.
+
+Для этого надо в файл `package.json` в разделе `scripts`->`start` привести
+команду к виду:
+
+    ng serve --port 4201
+
+Также надо в файле `.vscode/launch.json` в разделе `configurations(ng serve)`->`url`
+привести к виду:
+
+    http://localhost:4201/

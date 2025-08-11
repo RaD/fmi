@@ -3,6 +3,16 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "name": "ng serve :4201",
+      "type": "chrome",
+      "request": "launch",
+      "preLaunchTask": "npm: start-4201",
+      "url": "http://localhost:4201/",
+      "webRoot": "${workspaceFolder}",
+      "runtimeExecutable": "/Applications/Yandex.app/Contents/MacOS/Yandex",
+      "userDataDir": "${workspaceFolder}/.vscode/chrome-debug-userdir"
+    },
+    {
       "name": "ng serve",
       "type": "chrome",
       "request": "launch",

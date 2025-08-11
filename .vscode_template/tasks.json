@@ -22,6 +22,28 @@
     },
     {
       "type": "npm",
+      "script": "start-4201",
+      "isBackground": true,
+      "problemMatcher": {
+        "owner": "typescript",
+        "pattern": "$tsc",
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": {
+            "regexp": "(.*?)"
+          },
+          "endsPattern": {
+            "regexp": "bundle generation complete"
+          }
+        }
+      },
+      "group": {
+        "kind": "build",
+        "isDefault": true,
+      }
+    },
+    {
+      "type": "npm",
       "script": "test",
       "isBackground": true,
       "problemMatcher": {
