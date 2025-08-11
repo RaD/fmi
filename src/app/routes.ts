@@ -8,6 +8,9 @@ export const routes: Routes = [
   {path: urls.MENU, loadComponent: () => import(
     '../pages/menu/component'
   ).then(m => m.MenuPage)},
+  {path: urls.YAML_CONSOLE, loadComponent: () => import(
+    '../pages/yaml-console/component'
+  ).then(m => m.YamlConsolePage)},
 
   {path: '', pathMatch: 'full', redirectTo: '/' + urls.WELCOME},
   {path: '**', redirectTo: '/' + urls.WELCOME},

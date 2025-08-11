@@ -1,0 +1,54 @@
+<div class="container content-wrapper">
+  <div class="row mt-5 mb-3">
+    <h1>YAML console</h1>
+  </div>
+
+  <div class="mb-3">
+    <h2>{{ labelTitle}}</h2>
+    <div class="recipes-list">
+      <ul>
+        <li *ngFor="let recipe of recipes"
+          class="d-flex justify-content-between align-items-center"
+          [class.active]="selected.pk === recipe.pk"
+          (click)="choose(recipe)">{{ recipe.title }}</li>
+      </ul>
+    </div>
+  </div>
+
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <!-- Скрытое поле PK -->
+    <input type="hidden" formControlName="pk"/>
+
+    <div class="mb-3 console-body">
+      <p class="lead">{{ labelConsole }}</p>
+      <div class="mb-3 mt-3">
+        <label for="recipeTitle" class="form-label">{{ labelFieldTitle }}</label>
+        <input type="text" class="form-control" id="recipeTitle"
+          aria-describedby="label-title" formControlName="title"
+          placeholder="{{ labelFieldTitlePlaceholder }}"/>
+      </div>
+      <div class="mb-3">
+        <label for="recipeBody">Рецепт</label>
+        <textarea class="form-control" id="recipeBody"
+          formControlName="content"
+          placeholder="Место для YAML"></textarea>
+      </div>
+    </div>
+
+    <div class="container mb-3">
+      <div class="row footer-fixed">
+        <div class="d-flex align-items-end gap-2 mb-3">
+          <button class="btn btn-danger btn-sm"
+            (click)="deleteSelected()">Удалить</button>
+          <div class="ms-auto d-flex gap-2">
+            <button type="button" class="btn btn-primary btn-sm"
+              (click)="save()">Сохранить</button>
+            <button type="button" class="btn btn-info btn-sm">Выполнить</button>
+            <button type="button" class="btn btn-warning btn-sm"
+              (click)="clearForm()">Очистить</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

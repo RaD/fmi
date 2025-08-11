@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { urls } from '../../app/interface';
+import { urls, enableYamlConsole } from '../../app/interface';
 
 @Component({
   selector: 'app-welcome',
@@ -12,4 +12,5 @@ import { urls } from '../../app/interface';
 })
 export class WelcomePage {
   urls = urls;
+  enableYamlConsole = enableYamlConsole;
 }

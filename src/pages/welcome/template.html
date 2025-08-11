@@ -1,5 +1,12 @@
 <div class="screen welcome">
-  <h3>Добро пожаловать!</h3>
+  @if (enableYamlConsole) {
+    <a [routerLink]="['/' + urls.YAML_CONSOLE]">
+      <h3>YAML CONSOLE</h3>
+    </a>
+  }
+  @else {
+    <h3>Добро пожаловать!</h3>
+  }
   <div class="welcome_logo">
     <img src="/assets/media/logo.svg" width="825" height="190"/>
   </div>
