@@ -1,1 +1,63 @@
-<p>payment works!</p>
+<comp-advert/>
+
+<div class="screen payment">
+  <div class="payment_main">
+    <h2>{{ getPaymentTitle() }}</h2>
+    <div class="payment_pic">
+      <img [src]="getPaymentIcon()" width="300" height="300" [alt]="getPaymentTitle()">
+    </div>
+  </div>
+  <div class="payment_foot">
+    <a [routerLink]="['/' + urls.WELCOME]" class="btn yellow empty">
+      <div class="_icon">
+        <img src="/assets/media/arrow-left.svg" width="23" height="20" alt="Назад">
+      </div>
+      <div class="_text">Выход</div>
+    </a>
+    <button type="button" class="btn yellow" (click)="openPaymentModal()">
+      <div class="_text">Сменить тип оплаты</div>
+    </button>
+  </div>
+</div>
+
+<!-- Payment Modal -->
+@if (showPaymentModal) {
+  <div class="modal modal_payment shown">
+    <div class="modal_window">
+      <div class="modal_payment_back" (click)="closePaymentModal()">
+        <div class="_icon">
+          <img src="/assets/media/arrow-left.svg" width="23" height="20" alt="Назад">
+        </div>
+        <div class="_text">Вернуться к списку товаров</div>
+      </div>
+      <div class="modal_payment_total">
+        Итого: <h5><span class="_number">{{ totalPrice }}</span> ₽</h5>
+      </div>
+      <div class="modal_payment_main">
+        <h4>Выберите способ оплаты</h4>
+        <div class="modal_payment_vars">
+          @for (method of paymentMethods; track method.id) {
+            <label>
+              <input type="radio" name="payment" [value]="method.id"
+                [checked]="method.id === paymentMethod">
+              <div (click)="selectPaymentMethod(method)">
+                <div class="_text">{{ method.title }}</div>
+                <div class="_icon">
+                  <img [src]="method.icon" [alt]="method.title">
+                </div>
+              </div>
+            </label>
+          }
+        </div>
+      </div>
+      <div class="modal_payment_act">
+        <a [routerLink]="['/' + urls.MENU]" class="btn red">
+          <div class="_text">Отменить заказ</div>
+        </a>
+        <button type="button" class="btn green" (click)="selectPaymentMethod(getPaymentMethod(paymentMethod))">
+          <div class="_text">Перейти к оплате</div>
+        </button>
+      </div>
+    </div>
+  </div>
+}

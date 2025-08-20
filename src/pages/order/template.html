@@ -1,1 +1,146 @@
-<p>order works!</p>
+<comp-advert/>
+
+<div class="screen order">
+  <div class="order_main">
+    <h4>Ваш заказ</h4>
+    <div class="order_list">
+      <div class="order_list_inner">
+        <table>
+          <thead>
+            <tr>
+              <td colspan="2">Наименование</td>
+              <td>Количество</td>
+              <td>Стоимость</td>
+            </tr>
+          </thead>
+          <tbody>
+            @for (item of cartItems; track item.menuItem.id; let i = $index) {
+              <tr [attr.data-offer]="item.menuItem.id">
+                <td>
+                  <div class="order_offer_pic">
+                    <img [src]="item.menuItem.image" [alt]="item.menuItem.title">
+                  </div>
+                </td>
+                <td>
+                  <div class="order_offer_title">{{ item.menuItem.title }}</div>
+                  @if (item.selectedIngredients.length > 0) {
+                    <div class="order_offer_ingr">Доп. ингредиенты</div>
+                  }
+                </td>
+                <td>
+                  <div class="count">
+                    <button type="button" class="count_minus" 
+                      [class.disabled]="item.quantity <= 1"
+                      (click)="updateQuantity(i, item.quantity - 1)">
+                      <img src="/assets/media/minus.svg" width="24" height="2" alt="Убрать">
+                    </button>
+                    <input type="text" name="count" [value]="item.quantity" 
+                      class="count_input" readonly>
+                    <button type="button" class="count_plus"
+                      (click)="updateQuantity(i, item.quantity + 1)">
+                      <img src="/assets/media/plus.svg" width="24" height="24" alt="Добавить">
+                    </button>
+                  </div>
+                </td>
+                <td><span class="order_offer_summ">{{ item.totalPrice }}</span> ₽</td>
+              </tr>
+            }
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="order_total">
+    Итого: <h5><span class="order_total_summ">{{ totalPrice }}</span> ₽</h5>
+  </div>
+
+  <div class="order_foot">
+    <a [routerLink]="['/' + urls.MENU]" class="btn white">
+      <div class="_icon">
+        <img src="/assets/media/arrow-left.svg" width="23" height="20" alt="Назад">
+      </div>
+      <div class="_text">Назад</div>
+    </a>
+    <a [routerLink]="['/' + urls.MENU]" class="btn red" (click)="clearCart()">
+      <div class="_text">Отменить заказ</div>
+    </a>
+    <button type="button" class="btn green" (click)="openPaymentModal()">
+      <div class="_text">Перейти к оплате</div>
+    </button>
+  </div>
+</div>
+
+<!-- Exclude Modal -->
+@if (showExcludeModal) {
+  <div class="modal modal_exclude shown">
+    <div class="modal_window">
+      <div class="modal_close" (click)="closeExcludeModal()">
+        <img src="/assets/media/cross.svg" width="29" height="29" alt="Закрыть">
+      </div>
+      <h4>Удалить из заказа?</h4>
+      @if (itemToExclude) {
+        <div class="modal_exclude_offer">
+          <div class="modal_exclude_offer_pic">
+            <img [src]="itemToExclude.menuItem.image" [alt]="itemToExclude.menuItem.title">
+          </div>
+          <div class="modal_exclude_offer_title">{{ itemToExclude.menuItem.title }}</div>
+          <div class="modal_exclude_offer_summ">
+            <span class="_number">{{ itemToExclude.totalPrice }}</span> ₽
+          </div>
+        </div>
+      }
+      <div class="modal_exclude_act">
+        <button type="button" class="btn red" (click)="closeExcludeModal()">
+          <div class="_text">Отменить</div>
+        </button>
+        <button type="button" class="btn green" (click)="confirmExclude()">
+          <div class="_text">Подтвердить</div>
+        </button>
+      </div>
+    </div>
+  </div>
+}
+
+<!-- Payment Modal -->
+@if (showPaymentModal) {
+  <div class="modal modal_payment shown">
+    <div class="modal_window">
+      <div class="modal_payment_back" (click)="closePaymentModal()">
+        <div class="_icon">
+          <img src="/assets/media/arrow-left.svg" width="23" height="20" alt="Назад">
+        </div>
+        <div class="_text">Вернуться к списку товаров</div>
+      </div>
+      <div class="modal_payment_total">
+        Итого: <h5><span class="_number">{{ totalPrice }}</span> ₽</h5>
+      </div>
+      <div class="modal_payment_main">
+        <h4>Выберите способ оплаты</h4>
+        <div class="modal_payment_vars">
+          @for (method of paymentMethods; track method.id) {
+            <label>
+              <input type="radio" name="payment" [value]="method.id" 
+                [checked]="selectedPaymentMethod?.id === method.id"
+                (change)="selectPaymentMethod(method)">
+              <div>
+                <div class="_text">{{ method.title }}</div>
+                <div class="_icon">
+                  <img [src]="method.icon" [alt]="method.title">
+                </div>
+              </div>
+            </label>
+          }
+        </div>
+      </div>
+      <div class="modal_payment_act">
+        <a [routerLink]="['/' + urls.MENU]" class="btn red" (click)="clearCart()">
+          <div class="_text">Отменить заказ</div>
+        </a>
+        <button type="button" class="btn green" (click)="proceedToPayment()">
+          <div class="_text">Перейти к оплате</div>
+        </button>
+      </div>
+    </div>
+  </div>
+}

@@ -1,4 +1,5 @@
 <label>
+  <input type="radio" name="menu_cat" [value]="categoryId" [checked]="isSelected">
   <div [attr.data-category-id]="categoryId" (click)="onSelect()">
     <img [src]="img" [alt]="title"/>
     {{ title }}

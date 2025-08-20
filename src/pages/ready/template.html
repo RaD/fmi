@@ -1,1 +1,23 @@
-<p>ready works!</p>
+<comp-advert/>
+
+<div class="screen done">
+  <div class="done_main">
+    <h4>Заказ готов!</h4>
+    <div class="done_desc">Заберите его из окошка слева</div>
+    <div class="done_pic">
+      <img src="/assets/media/done.svg" width="343" height="343" alt="Готово">
+    </div>
+    <h2>Приятного аппетита!</h2>
+  </div>
+  <div class="done_foot">
+    <a [routerLink]="['/' + urls.WELCOME]" class="btn yellow empty">
+      <div class="_icon">
+        <img src="/assets/media/arrow-left.svg" width="23" height="20" alt="Назад">
+      </div>
+      <div class="_text">Выход</div>
+    </a>
+    <a [routerLink]="['/' + urls.MENU]" class="btn yellow">
+      <div class="_text">Оформить новый заказ</div>
+    </a>
+  </div>
+</div>

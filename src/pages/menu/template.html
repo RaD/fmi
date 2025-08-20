@@ -3,23 +3,41 @@
 <div class="screen menu">
   <div class="menu_side">
     <div class="menu_cats">
-      @for (category of categories; track category.categoryId) {
+      @for (category of categories; track category.id) {
         <comp-menu-section
-          [categoryId]="category.categoryId"
+          [categoryId]="category.id"
           [img]="category.icon"
           [title]="category.title"
+          [isSelected]="selectedCategory === category.id"
           (selected)="onCategorySelected($event)"/>
       }
     </div>
   </div>
-  <comp-menu-list [categoryId]="selectedCategory" />
 
-  <form action="" method="post" class="menu_foot">
-    <button type="reset" class="btn-vasily red">
+  <div class="menu_main">
+    <div class="menu_cat">
+      <h4>{{ categoryTitle }}</h4>
+      <div class="menu_list">
+        @for (item of menuItems; track item.id) {
+          <comp-menu-item
+            [menuItem]="item"
+            (addToCart)="addToCart($event)"/>
+        }
+      </div>
+    </div>
+  </div>
+
+  <div class="menu_foot">
+    <a [routerLink]="['/' + urls.WELCOME]" class="btn white">
+      <div class="_icon">
+        <img src="/assets/media/arrow-left.svg" width="23" height="20" alt="Назад">
+      </div>
+      <div class="_text">Выход</div>
+    </a>
+    <button type="button" class="btn red" [disabled]="itemCount === 0" (click)="clearCart()">
       <div class="_text">Очистить выбор</div>
     </button>
-    <button type="submit" class="btn-vasily green">
-      <div class="_text">Далее • <span class="_total">600</span> ₽</div>
-    </button>
-  </form>
-</div>
+    <a [routerLink]="['/' + urls.ORDER]" class="btn green" [class.disabled]="itemCount === 0">
+      <div class="_text">Далее • <span class="_total">{{ totalPrice }}</span> ₽</div>
+    </a>
+  </div>

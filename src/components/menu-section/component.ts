@@ -10,6 +10,7 @@ export class MenuSectionComponent {
   @Input() categoryId!: string;
   @Input() img!: string;
   @Input() title!: string;
+  @Input() isSelected: boolean = false;
 
   @Output() selected = new EventEmitter<string>();
 

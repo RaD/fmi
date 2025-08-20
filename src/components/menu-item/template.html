@@ -1,9 +1,17 @@
-<div class="menu_offer disabled">
+<div class="menu_offer" [class.disabled]="!menuItem.available">
   <div class="menu_offer_title">
-    Блин с ветчиной
+    {{ menuItem.title }}
   </div>
   <div class="menu_offer_pic">
-    <img src="/assets/media/menu/01.png"/>
+    <img [src]="menuItem.image" [alt]="menuItem.title"/>
   </div>
-  <comp-menu-actions [isAbsent]="false"/>
+  <div class="menu_offer_buy">
+    @if (!menuItem.available) {
+      <h5>Нет в наличии</h5>
+    } @else {
+      <h5><span class="_number">{{ menuItem.price }}</span> ₽</h5>
+      <button type="button" class="modal_open" (click)="onAddToCart()">
+        <img src="/assets/media/plus.svg" width="24" height="24" alt="Добавить">
+      </button>
+    }
 </div>

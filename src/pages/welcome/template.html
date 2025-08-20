@@ -1,12 +1,5 @@
 <div class="screen welcome">
-  @if (enableYamlConsole) {
-    <a [routerLink]="['/' + urls.YAML_CONSOLE]">
-      <h3>YAML CONSOLE</h3>
-    </a>
-  }
-  @else {
-    <h3>Добро пожаловать!</h3>
-  }
+  <h3>Добро пожаловать!</h3>
   <div class="welcome_logo">
     <img src="/assets/media/logo.svg" width="825" height="190"/>
   </div>
@@ -17,4 +10,11 @@
   <a [routerLink]="['/' + urls.MENU]" class="welcome_start">
     <h2>Нажмите, чтобы начать</h2>
   </a>
-</div>
+  
+  @if (enableYamlConsole) {
+    <div style="position: absolute; top: 20px; right: 20px;">
+      <a [routerLink]="['/' + urls.YAML_CONSOLE]" class="btn btn-sm btn-light">
+        YAML Console
+      </a>
+    </div>
+  }
