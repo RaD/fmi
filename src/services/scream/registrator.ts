@@ -11,6 +11,6 @@ export class MessageRegistrator extends PostboyAbstractRegistrator {
   }
 
   protected _up(): void {
-    this.recordSubject(OnYamlProcessedEvent);
+    this.postboy.recordSubject(OnYamlProcessedEvent);
   }
 }
